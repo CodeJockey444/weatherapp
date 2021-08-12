@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Style+Script&display=swap");
+:root {
+  --font-color: #fff;
+  --unix-font-color: orange;
+  --dark-bg: rgb(24, 23, 23);
+  --light-bg: orange;
+  --normal-font-family: "Poppins", sans-serif;
+  --unix-font-family: "Style Script", cursive;
+}
+body,
+html {
+  scroll-behavior: smooth;
+  background-color: var(--dark-bg);
+  overflow-x: hidden;
+}
+span,
+h1 {
+  font-size: 3.5rem;
+  font-family: var(--unix-font-family);
+  color: white;
+}
+p{
+  font-size: 1.5rem;
+  font-family: var(--normal-font-family);
+  color: white;
+}
+.box-summer,
+.box-winter,
+.loading,
+.error {
+  display: grid;
+  height: 100vh;
+  width: 100%;
+  background: url("https://media.istockphoto.com/photos/johannesburg-city-at-sunset-picture-id478991954?k=6&m=478991954&s=612x612&w=0&h=4RRg5-J47y-Sl3Owum1qRQA2qAsq6fZu9y1mMKMVBrQ=");
+  place-content: center;
+}
+.box-winter {
+  background: url("https://wallpaperaccess.com/full/1253680.jpg");
+}
+.loading {
+  background: url("https://i2.wp.com/codemyui.com/wp-content/uploads/2017/09/rotate-pulsating-loading-animation.gif?fit=880%2C440&ssl=1");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.error {
+  background: url("https://wallpapercave.com/wp/wp4490728.jpg");
+}
+
+.display-box {
+  width: 700px;
+  height: 375px;
+  color: white;
+  display: grid;
+  place-content: center;
+  gap: 20px;
+  border-radius: 24px;
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 191, 255, 0);
+  box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px;
+  border: 1px rgba(255, 255, 255, 0.4) solid;
+  border-bottom: 1px rgba(40, 40, 40, 0.35) solid;
+  border-right: 1px rgba(40, 40, 40, 0.35) solid;
+}

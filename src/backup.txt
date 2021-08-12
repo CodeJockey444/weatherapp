@@ -1,0 +1,90 @@
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { latitude: null, longitude: null, accessDenied: null };
+    window.navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
+      },
+      (error) => {
+        this.setState({ accessDenied: error.message });
+      }
+    );
+  }
+  render() {
+    if (
+      !this.state.accessDenied &&
+      this.state.longitude &&
+      this.state.latitude
+    ) {
+      return (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+            height: "100vh",
+            backgroundColor: "black",
+          }}
+        >
+          <h1 style={{ color: "white", fontFamily: "fantasy" }}>
+            <span>Your latitude</span> : {Math.round(this.state.latitude)}
+          </h1>
+          <h1 style={{ color: "white", fontFamily: "fantasy" }}>
+            <span  style={{ color: "orange", fontFamily: "fantasy" }}>Your longitude</span> : {Math.round(this.state.longitude)}
+          </h1>
+        </div>
+      );
+    }
+    if (
+      !this.state.accessDenied &&
+      !this.state.longitude &&
+      !this.state.latitude
+    ) {
+      return (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+            height: "100vh",
+            backgroundColor: "black",
+          }}
+        >
+          <h1 style={{ color: "white", fontFamily: "fantasy" }}>Loading...</h1>
+          <p style={{ color: "white", fontFamily: "fantasy" }}>
+            Please allow permission
+          </p>
+        </div>
+      );
+    }
+    if(this.state.accessDenied &&
+      !this.state.longitude &&
+      !this.state.latitude){
+        return ( 
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+            height: "100vh",
+            backgroundColor: "black",
+          }}
+        >
+          <h1 style={{ color: "white", fontFamily: "fantasy" }}>
+            Please allow permission
+          </h1>
+          <p style={{ color: "white", fontFamily: "fantasy" }}>permission needed</p>
+        </div>)
+      }
+  
+  }
+}
+
+ReactDOM.render(<App />, document.querySelector("#root"));
